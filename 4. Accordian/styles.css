@@ -7,31 +7,31 @@ body{
 
 }
 
-.accordian{
+.accordion{
   max-width: 400px;
   width: 65%;
   background-color: #fff;
   padding: 30px;
   border-radius: 30px;
 }
-.accordian .accordian-title{
+.accordion .accordion-title{
   text-align: center;
   margin-bottom: 30px;
 }
-.accordian .content-container .question{
+.accordion .content-container .question{
   padding: 15px 0px;
   font-size: 20px;
   cursor: pointer;
   border-bottom: 1px solid gray;
   position: relative; 
 }
-.accordian .content-container .question::after{
+.accordion .content-container .question::after{
   content: '+';
   position: absolute;
   right: -2%;
   font-size: 20px;
 }
-.accordian .content-container .answer{
+.accordion .content-container .answer{
   padding-top: 15px;
   font-size: 20px;
   line-height: 1.5;
@@ -42,15 +42,15 @@ body{
 }
 
 /* JavaScript Styling Link */
-.accordian .content-container.active .answer{
+.accordion .content-container.active .answer{
   height: max-content;
 }
-.accordian .content-container.active .question{
+.accordion .content-container.active .question{
   font-size: 18px;
   transition: .5s;
 }
 
-.accordian .content-container.active .question::after{
+.accordion .content-container.active .question::after{
   content: '-';
   font-size: 30px;
   transition: .5s;
