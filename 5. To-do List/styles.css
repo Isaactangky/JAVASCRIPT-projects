@@ -1,18 +1,29 @@
 body{
   margin-top: 50px;
   height: 100vh;
+  
   background: url(./Wallpaper.jpg) no-repeat center center/ cover;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
+.container{
+  min-width: 350px;
+  max-width: 500px;
+  width: 30%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .add-task-container{
-  width: 350px;
+  box-sizing: border-box;
   padding: 20px 10px;
   background-color: #fff;
   border-radius: 10px;
   display: flex;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 input{
   flex: 5;
@@ -42,7 +53,7 @@ input{
   background-color: #fff;
   border-radius: 10px;
   padding: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 
   display: flex;
   justify-content: space-between;
@@ -59,8 +70,19 @@ input{
   border-radius: 10px;
   background-color: #fff;
   cursor: pointer;
+  padding: 0;
 }
-
+.task button i{
+  width: 105%;
+  height: 105%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+  padding-top: 15px;
+  border: 1px;
+  
+}
 .task .checkTask{
   color: orange;
   margin-right: 5px;

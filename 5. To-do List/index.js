@@ -33,7 +33,7 @@ addTask.addEventListener("click", function() {
   })
   delBtn.addEventListener("click", function(e){
     let target = e.target;
-    this.parentElement.remove();
+    target.parentElement.parentElement.remove();
     
   })
   
