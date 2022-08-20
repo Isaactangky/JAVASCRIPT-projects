@@ -70,3 +70,8 @@ body{
 #reset-btn i{
   transform: rotate(45deg);
 }
+@media (max-width: 600px){
+  #time{
+    font-size: 4rem;
+  }
+}
