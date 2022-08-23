@@ -8,13 +8,13 @@ const BOARD_WIDTH = 560;
 const BOARD_HEIGHT = 300;
 const BALL_SPEED = 2;
 const BALL_DIAMETER = 20;
-const USER_SPEED = 20;
+const USER_SPEED = 40;
 const USER_START = [230,10];
 let currentPosition = USER_START;
 const BALL_START = [230,40];
 let ballCurrentPosition = BALL_START;
 
-let xDirection = - BALL_SPEED;
+let xDirection = BALL_SPEED;
 let yDirection = BALL_SPEED;
 let timerId;
 
@@ -115,23 +115,45 @@ function moveBall(){
   drawBall();
   checkCollisions()
 }
-timerId = setInterval(moveBall, 10);
+timerId = setInterval(moveBall, 20);
 
 // check for collisions
 function checkCollisions(){
   // check block collisions
   for (let i = 0; i < blocks.length; i++ ){
     if (
-      ballCurrentPosition[0] > blocks[i].bottomLeft[0] && 
-      ballCurrentPosition[0] < blocks[i].bottomRight[0] && 
-      ballCurrentPosition[1] > blocks[i].bottomLeft[1] && 
-      ballCurrentPosition[1] < blocks[i].topLeft[1]  ){
+      ( // touching the bottom border
+        ballCurrentPosition[0] > blocks[i].bottomLeft[0] && 
+        ballCurrentPosition[0] < blocks[i].bottomRight[0] && 
+        ballCurrentPosition[1] > blocks[i].bottomLeft[1] - BLOCK_HEIGHT && 
+        ballCurrentPosition[1] < blocks[i].topLeft[1] - BLOCK_HEIGHT
+      ) ||
+      ( // touching the left border of block
+        ballCurrentPosition[0] + BALL_DIAMETER > blocks[i].bottomLeft[0] && 
+        ballCurrentPosition[0] + BALL_DIAMETER < blocks[i].bottomRight[0] && 
+        ballCurrentPosition[1] - BALL_DIAMETER / 2  > blocks[i].bottomLeft[1] - BLOCK_HEIGHT && 
+        ballCurrentPosition[1] - BALL_DIAMETER / 2  < blocks[i].topLeft[1] - BLOCK_HEIGHT
+      ) ||
+      (
+        ballCurrentPosition[0] > blocks[i].bottomLeft[0] && 
+        ballCurrentPosition[0]  < blocks[i].bottomRight[0] && 
+        ballCurrentPosition[1] - BALL_DIAMETER / 2  > blocks[i].bottomLeft[1]  && 
+        ballCurrentPosition[1] - BALL_DIAMETER / 2 < blocks[i].topLeft[1] 
+      ) ||
+      ( // touching the top border
+        ballCurrentPosition[0] > blocks[i].bottomLeft[0] && 
+        ballCurrentPosition[0] < blocks[i].bottomRight[0] && 
+        ballCurrentPosition[1] - BALL_DIAMETER > blocks[i].bottomLeft[1]  && 
+        ballCurrentPosition[1] - BALL_DIAMETER < blocks[i].topLeft[1] 
+      ) ){
+        changeDirection();
         const allBlocks = Array.from(document.querySelectorAll('.block'));
         allBlocks[i].classList.remove('block');
+        
         blocks.splice(i,1);
         score++;
         scoreDisplay.textContent = score;
-        changeDirection();
+  
         // check for win
         if (blocks.length === 0){
           scoreDisplay.textContent += ' YOU WIN!!!';
