@@ -12,7 +12,7 @@ These are Javascript projects I coded by using Vanilla JavaScript or JQuery. The
 ## Projects
 
 ### 13.Space Invader
-August 31
+__August 31, 2022__
 #### Challenges: 
 This is a classic space invader game. There are a group of alien invaders invading from the top of the space. The user has the ability to move the shooter to fight laser to eliminate the invaders. The user wins when all the invaders are killed and loses when the invader touch the shooter or the invaders pass through the bottom border. 
 
