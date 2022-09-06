@@ -4,7 +4,8 @@ These are Javascript projects I coded by using Vanilla JavaScript or JQuery. The
 ## Table of contents
 
 - [Projects](#Projects) 
-  - [13.Space-Invader](#13.space-invader)
+  - [13.Space-Invader](#13.Space-Invader)
+  - [14.Drop-Dwon-Menu](#14.Drop-Down-Menu)
 
 - [Author](#Author)
 
@@ -28,6 +29,27 @@ This is a classic space invader game. There are a group of alien invaders invadi
 
 #### Functions or Concepts Applied / learned:
 - querySelector(), querySelectorAll(), addEventListener(), classList.contains(), .onclick(), classList.add(), classList.remove(), setTimeout(), setTimeInterval()
+
+#### Live Site URL: 
+[Add live site URL here](https://your-live-site-url.com)
+
+
+### 14.Drop Dwon Menu
+*September 6, 2022*
+#### Challenges: 
+This is a menu that shows a sub menu when the user mouse over a menu item. This is a function that I would like to incorporate in my personal website. 
+
+#### My Process:
+
+1. Create navigation bar with a unordered list 
+2. Add simple design to the menu and add hover effects
+3. Nesting another menu in the "Projects" section
+4. Set position for the sub menu to absolute, to seperate it from the page
+5. Inside the script, add "mouseover" and "mouseout" event listeners to the list item, the display of the sub menu is set to "block" when "mouseover", and "none" when "mouseout"
+6. After finishing the version with JS script, I notice that the desire function can be achieved by simple css :hover selector. The JS version is commented out.
+
+#### Functions or Concepts Applied / learned:
+- mouseover event, mouseout event, querySelector(), querySelectorAll(), addEventListener(), classList.add(), classList.remove()
 
 #### Live Site URL: 
 [Add live site URL here](https://your-live-site-url.com)

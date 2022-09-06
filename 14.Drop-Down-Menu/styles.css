@@ -1,0 +1,85 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: rgb(128, 157, 231);
+}
+
+.menu-bar{
+  background-color: rgb(43, 80, 171);
+  text-align: center;
+}
+.menu-bar ul{
+  display: inline-flex;
+  list-style: none;
+  color: #fff;
+}
+.menu-bar ul li{
+  --font-size: 1rem;
+  --main-padding: 15px;
+  font-size: var(--font-size);
+  width: 120px;
+  margin: 15px;
+  padding: var(--main-padding);
+  position: relative;
+}
+.menu-bar ul li a{
+ text-decoration: none;
+}
+
+a:visited{
+  text-decoration: none;
+  color: #fff;
+}
+
+.active, .menu-bar ul li:hover{
+  background-color: rgb(92, 117, 180);
+ 
+}
+
+.sub-menu{
+  background-color: rgb(43, 80, 171);
+  /* border: #fff 1px solid; */
+  position: absolute;
+  top: calc(var(--main-padding) + var(--main-padding) + var(--font-size));
+  left: 0px;
+  display: none;
+  
+}
+
+.active, .menu-bar ul li:hover .sub-menu{
+  display: block;
+}
+
+.sub-menu ul{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 10px;
+}
+.sub-menu ul li{
+  padding: 5px 0px;
+  border-bottom: 1px dotted #fff;
+  margin: 0;
+  padding-right: 10px;
+}
+
+.sub-menu ul li:last-child{
+  border-bottom: none;
+}
+
+.sub-menu ul li:hover{
+  background-color: rgb(43, 80, 171);
+}
+
+.sub-menu ul li a:hover{
+  color: rgb(200, 211, 238);
+}
+
+/* .visible{
+  display: block;
+} */
+
