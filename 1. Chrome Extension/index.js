@@ -1,64 +1,53 @@
+let myBookmarks = [];
+const inputEl = document.getElementById("input-el");
+const saveBtn = document.getElementById("input-btn");
+const deleteBtn = document.getElementById("del-btn");
+const tabBtn = document.getElementById("tab-btn");
+const ulEl = document.getElementById("ul-el");
+const bookmarksFromLocalStorage = JSON.parse(
+  localStorage.getItem("myBookmarks")
+);
 
-let myLeads = []
-const inputEl = document.getElementById("input-el")
-const saveBtn = document.getElementById("input-btn")
-const deleteBtn = document.getElementById("del-btn")
-const tabBtn = document.getElementById("tab-btn")
-const ulEl = document.getElementById("ul-el")
-const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
-
-
-if(leadsFromLocalStorage){
-  myLeads = leadsFromLocalStorage
-  render(myLeads);
+if (bookmarksFromLocalStorage) {
+  myBookmarks = bookmarksFromLocalStorage;
+  render(myBookmarks);
 }
-deleteBtn.addEventListener("dblclick", function(){
-  localStorage.clear()
-  myLeads = []
-  render(myLeads)
+deleteBtn.addEventListener("dblclick", function () {
+  localStorage.removeItem("myBookmarks");
+  myBookmarks = [];
+  render(myBookmarks);
+});
+tabBtn.addEventListener("click", function () {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    myBookmarks.push(tabs[0].url);
+    const storage = JSON.stringify(myBookmarks);
+    localStorage.setItem("myBookmarks", storage);
+    render(myBookmarks);
+  });
+});
 
-})
-tabBtn.addEventListener("click", function(){
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    myLeads.push(tabs[0].url)
-    const storage = JSON.stringify(myLeads)
-    localStorage.setItem("myLeads", storage)
-    render(myLeads);
-  })
-  
-})
+function render(bookmarks) {
+  const listItems = bookmarks
+    .map(
+      (b) =>
+        `
+    <li>
+      <a target="_blank" href="${b}"> 
+        ${b}
+      </a>
+    </li>
+    `
+    )
+    .join("");
 
-function render(leads){
-  let listItems = ""
-  for (let i = 0; i < leads.length; i++){
-  /*   ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"  
-    const li = document.createElement("li")
-    li.textContent = myLeads[i]
-    ulEl.append(li)
-    */
-    listItems += `
-        <li>
-          <a target="_blank" href="${leads[i]}"> 
-            ${leads[i]}
-          </a>
-        </li>`
-        
-  }
-  ulEl.innerHTML = listItems
+  ulEl.innerHTML = listItems;
 }
 
-
-saveBtn.addEventListener("click", function(){
-  let input = inputEl.value
+saveBtn.addEventListener("click", function () {
+  let input = inputEl.value;
   inputEl.value = "";
-  myLeads.push(input)
-  const storage = JSON.stringify(myLeads)
-  localStorage.setItem("myLeads", storage)
-  render(myLeads);
-  
-})
-
-
-
-
-
+  myBookmarks.push(input);
+  const storage = JSON.stringify(myBookmarks);
+  localStorage.setItem("myBookmarks", storage);
+  render(myBookmarks);
+});
