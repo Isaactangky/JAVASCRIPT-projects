@@ -20,7 +20,7 @@ _Last Update: October 19, 2022 (refactoring code)_
 
 This Chrome extension enable a user to save the current tab url or manually type a url and save it in the local storage.
 
-![screenshoot]("1. Chrome Extension/Screenshot-chrome-extension.png?raw=true")
+![screenshoot](1. Chrome Extension/Screenshot-chrome-extension.png?raw=true)
 
 #### My Process:
 
